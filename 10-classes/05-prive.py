@@ -32,7 +32,32 @@ my_instance.get_letter() # Ok
 # elle-même : utilisez la convention pour en faire une méthode privée.
 
 ################################################################################
+class User:
+    def __init__(self, firstname: str, lastname: str, age: int):
+        self._firstname = firstname
+        self._lastname = lastname
+        self._age = age
+        self._followers = 0
+    
+    def get_full_name(self):
+        return self._firstname + " " + self._lastname
 
+    def get_age(self):
+        return self._age
+
+    def _is_adult(self):
+        return self._age >= 18
+
+    def add_followers(self, nbFollower: int):
+        if(self._is_adult()):
+            self._followers += nbFollower
+        print(self.get_full_name() + "has " + str(self._followers) + " followers")
+
+def get_oldest(user1: User, user2: User):
+    if user1.get_age() > user2.get_age():
+        return user1.get_full_name()
+    else:
+        return user2.get_full_name()
 ################################################################################
 
 # Respecter cette convention quand vous la voyez est cruciale : cela signifie

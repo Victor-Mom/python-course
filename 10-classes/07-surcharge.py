@@ -24,7 +24,40 @@ my_instance.say_hello()
 # Gardez aussi la condition sur is_adult.
 
 ################################################################################
+class User:
+    def __init__(self, firstname: str, lastname: str, age: int):
+        self._firstname = firstname
+        self._lastname = lastname
+        self._age = age
+        self._followers = 0
+    
+    def get_full_name(self):
+        return self._firstname + " " + self._lastname
 
+    def get_age(self):
+        return self._age
+        
+    def _is_adult(self):
+        return self._age >= 18
+
+    def add_followers(self, nbFollower: int):
+        if(self._is_adult()):
+            self._followers += nbFollower
+        print(self.get_full_name() + "has " + str(self._followers) + " followers")
+
+class Student(User):
+    def __init__(self, firstname: str, lastname: str, age: int, school: str, level: int):
+        User.__init__(self, firstname, lastname, age)
+        self._school = school
+        self._level = level
+
+    def has_degree(self) -> bool:
+        return True if self._level >= 3 else False
+
+    def add_followers(self, nbFollower: int):
+        if(self._is_adult() and self.has_degree()):
+            self._followers += nbFollower
+        print(self.get_full_name() + "has " + str(self._followers) + " followers")
 ################################################################################
 
 

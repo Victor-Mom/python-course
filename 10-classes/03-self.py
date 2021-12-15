@@ -13,6 +13,23 @@
 # La fonction devra renvoyer le nombre de followers final dans tous les cas.
 
 ################################################################################
+class User:
+    def __init__(self, firstname: str, lastname: str, age: int):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.age = age
+        self.followers = 0
+    
+    def get_full_name(self):
+        return self.firstname + " " + self.lastname
+
+    def is_adult(self):
+        return self.age >= 18
+
+    def add_followers(self, nbFollower: int):
+        if(self.is_adult()):
+            self.followers += nbFollower
+        print(self.get_full_name() + "has " + str(self.followers) + " followers")
 
 ################################################################################
 
