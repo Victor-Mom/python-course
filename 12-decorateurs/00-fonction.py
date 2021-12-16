@@ -60,4 +60,4 @@ print(number) #8
 
 
 
-print('\033[92m✓ OK' if get_hello_function(True)() == "Bonjour" and get_hello_function(False)() == "Hello" else '\033[91m❌KO')
+print('\033[92m✓ OK' if get_hello_generator(True)() == "Bonjour" and get_hello_generator(False)() == "Hello" else '\033[91m❌KO')
